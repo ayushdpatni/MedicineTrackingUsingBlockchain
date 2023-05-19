@@ -1,15 +1,19 @@
 import React from 'react'
 import { useHistory } from "react-router-dom"
-import img1 from "../src/images/medicine.jpg"
 import imgGif from "../src/images/medGif.gif"
 import imgDel from "../src/images/medicine-delivery.png"
 import vitamin from "../src/images/vitamin.png"
 import medAll from "../src/images/medAll.png"
 import tracking from '../src/images/tracking.png'
 import logo from '../src/images/logo.png'
+import SocialFollow from './SocialFollow'
+import F from './F'
 
 function Home() {
     const history = useHistory()
+    const redirect_to_home = () => {
+        history.push('/')
+    }
     const redirect_to_roles = () => {
         history.push('/roles')
     }
@@ -22,16 +26,21 @@ function Home() {
     const redirect_to_track = () => {
         history.push('/track')
     }
+    const redirect_to_last = () => {
+        history.push('/last')
+    }
     return (
         <div>
         <div className='navHome'>
             <img src={logo} className='logo'></img>
-            <h3 className='titleHome'>Pharmaceutical Supply Chain</h3>
+            <h3 className='titleHome' onClick={redirect_to_home}>Pharmaceutical Supply Chain</h3>
             <ul>
-                <li onClick={redirect_to_roles}>Register</li>
-                <li onClick={redirect_to_addmed}>Order Medicines</li>
-                <li onClick={redirect_to_supply}>Control Supply Chain</li>
-                <li onClick={redirect_to_track}>Track Medicines</li>
+                <li class="hover-underline-animation" onClick={redirect_to_home}>Home</li>
+                <li class="hover-underline-animation" onClick={redirect_to_roles}>Register</li>
+                <li class="hover-underline-animation" onClick={redirect_to_addmed}>Order Medicines</li>
+                <li class="hover-underline-animation" onClick={redirect_to_supply}>Control Supply Chain</li>
+                <li class="hover-underline-animation" onClick={redirect_to_track}>Track Medicines</li>
+                <li class="hover-underline-animation" onClick={redirect_to_last}>Contact Us</li>
             </ul>
         </div>
             <table className='table1'>
@@ -41,8 +50,8 @@ function Home() {
                         <img className='imgHome' src={imgGif}></img>
                     </td>
                     <td>
-                        <h1 className='headHome'>Welcome to the Pharmaceutical Supply Chain website</h1>
-                        <p className='paraHome'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                        <h1 className='headHome'>Welcome to the Pharmaceutical Supply Chain website!</h1>
+                        <p className='paraHome'>Welcome to the website dedicated to the innovative project on Fake Medicine Supply Chain Detection Using Blockchain. In an era plagued by the proliferation of counterfeit medicines. By ensuring transparency, traceability, and authenticity in the supply chain, we strive to protect public health and combat the dangerous presence of fake medications.</p>
                     </td>
                 </tr>
             </table>
@@ -50,8 +59,11 @@ function Home() {
                 <table className='table2'>
                     <tr>
                         <td className='part1'>
-                            <p>For registering Raw material suppliers ,Manufacturers, Distributors and Retailers</p>
+                            <p>Want to be a part of us?</p>
+                            <p>Register by clicking below...</p>
                             <button onClick={redirect_to_roles} className="btn1">Register</button>
+                            <p></p>
+                            <h6>Raw Material Supplier | Manufacturer | Distributor | Retailer | Consumer</h6>
                         </td>
                         <td className='part2'>
                             <img src={imgDel} className='imgDel'></img>
@@ -59,11 +71,6 @@ function Home() {
                     </tr>
                 </table>
             </div>
-            {/* <h6>(Note: Here <u>Owner</u> is the person who deployed the smart contract on the blockchain)</h6>
-            <h5>Step 1: Owner Should Register Raw material suppliers ,Manufacturers, Distributors and Retailers</h5> */}
-            {/* <h6>(Note: This is a one time step. Skip to step 2 if already done)</h6>
-            <button onClick={redirect_to_roles} className="btn btn-outline-primary btn-sm">Register</button>
-            <br /> */}
             <div className='orderDiv'>
                 <table className='table3'>
                     <tr>
@@ -71,7 +78,7 @@ function Home() {
                             <img src={vitamin} className='imgDel'></img>
                         </td>
                         <td className='part_2'>
-                            <p>For ordering the medicines</p>
+                            <p>For ordering the medicines...</p>
                             <button onClick={redirect_to_addmed} className="btn2">Order Medicines</button>
                         </td>
                     </tr>
@@ -113,6 +120,7 @@ function Home() {
             </div>
             {/* <h5><b>Track</b> the medicines:</h5>
             <button onClick={redirect_to_track} className="btn btn-outline-primary btn-sm">Track Medicines</button> */}
+            <F/>
         </div>
     )
 }

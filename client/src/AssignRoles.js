@@ -3,12 +3,29 @@ import Web3 from "web3";
 import SupplyChainABI from "./artifacts/SupplyChain.json"
 import { useHistory } from "react-router-dom"
 import LoadingSpinner from "./LoadingSpinner"
+import logo from '../src/images/logo.png'
+import F from './F'
 
 function AssignRoles() {
     const history = useHistory()
-    const [latitude, setlatitude] = useState("18.520430");
-    const [longitude, setlongitude] = useState("73.856744");
-
+    const redirect_to_roles = () => {
+        history.push('/roles')
+    }
+    const redirect_to_last = () => 
+    {
+        history.push('/last')
+    }
+    const redirect_to_addmed = () => {
+        history.push('/addmed')
+    }
+    const redirect_to_supply = () => {
+        history.push('/supply')
+    }
+    const redirect_to_track = () => {
+        history.push('/track')
+    }
+    const [latitude, setlatitude] = useState("")
+    const [longitude, setlongitude] = useState("")
     useEffect(() => {
         loadWeb3();
         loadBlockchaindata();
@@ -212,11 +229,22 @@ function AssignRoles() {
 
     return (
         <div className='register'>
-            <h1 className='registerhead'>Welcome to the register page </h1>
+            <div className='navHome'>
+            <img src={logo} className='logo'></img>
+            <h3 className='titleHome'onClick={redirect_to_home}>Pharmaceutical Supply Chain</h3>
+            <ul>
+                <li class="hover-underline-animation" onClick={redirect_to_home}>Home</li>
+                <li class="hover-underline-animation" onClick={redirect_to_roles}>Register</li>
+                <li class="hover-underline-animation" onClick={redirect_to_addmed}>Order Medicines</li>
+                <li class="hover-underline-animation" onClick={redirect_to_supply}>Control Supply Chain</li>
+                <li class="hover-underline-animation" onClick={redirect_to_track}>Track Medicines</li>
+                <li class="hover-underline-animation" onClick={redirect_to_last}>Contact Us</li>
+            </ul>
+        </div>
+            <h1 className='registerhead'>Welcome to the register page!</h1>
             <div className='registerBlock'>
                 <div className='card'>
                 <span className='spanRegister'><b>Current Account Address:</b> {currentaccount}</span>
-                <span onClick={redirect_to_home} className="btn btn-outline-danger btn-sm">HOME</span>
                 </div>
             </div>
             <hr className='new1'></hr>
@@ -337,6 +365,7 @@ function AssignRoles() {
                     })}
                 </tbody>
             </table>
+            <F/>
         </div>
     )
 }

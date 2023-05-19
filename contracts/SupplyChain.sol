@@ -86,6 +86,8 @@ contract SupplyChain {
         uint256 id; //supplier id
         string name; //Name of the raw material supplier
         string place; //Place the raw material supplier is based in
+        string latitude;
+        string longitude;
     }
 
     //To store all the raw material suppliers on the blockchain
@@ -97,6 +99,8 @@ contract SupplyChain {
         uint256 id; //manufacturer id
         string name; //Name of the manufacturer
         string place; //Place the manufacturer is based in
+        string latitude;
+        string longitude;
     }
 
     //To store all the manufacturers on the blockchain
@@ -108,6 +112,8 @@ contract SupplyChain {
         uint256 id; //distributor id
         string name; //Name of the distributor
         string place; //Place the distributor is based in
+        string latitude;
+        string longitude;
     }
 
     //To store all the distributors on the blockchain
@@ -119,6 +125,8 @@ contract SupplyChain {
         uint256 id; //retailer id
         string name; //Name of the retailer
         string place; //Place the retailer is based in
+        string latitude;
+        string longitude;
     }
 
     //To store all the retailers on the blockchain
@@ -128,40 +136,48 @@ contract SupplyChain {
     function addRMS(
         address _address,
         string memory _name,
-        string memory _place
+        string memory _place,
+        string memory _latitude,
+        string memory _longitude
     ) public onlyByOwner() {
         rmsCtr++;
-        RMS[rmsCtr] = rawMaterialSupplier(_address, rmsCtr, _name, _place);
+        RMS[rmsCtr] = rawMaterialSupplier(_address, rmsCtr, _name, _place,_latitude,_longitude);
     }
 
     //To add manufacturer. Only contract owner can add a new manufacturer
     function addManufacturer(
         address _address,
         string memory _name,
-        string memory _place
+        string memory _place,
+        string memory _latitude,
+        string memory _longitude
     ) public onlyByOwner() {
         manCtr++;
-        MAN[manCtr] = manufacturer(_address, manCtr, _name, _place);
+        MAN[manCtr] = manufacturer(_address, manCtr, _name, _place,_latitude,_longitude);
     }
 
     //To add distributor. Only contract owner can add a new distributor
     function addDistributor(
         address _address,
         string memory _name,
-        string memory _place
+        string memory _place,
+        string memory _latitude,
+        string memory _longitude
     ) public onlyByOwner() {
         disCtr++;
-        DIS[disCtr] = distributor(_address, disCtr, _name, _place);
+        DIS[disCtr] = distributor(_address, disCtr, _name, _place,_latitude,_longitude);
     }
 
     //To add retailer. Only contract owner can add a new retailer
     function addRetailer(
         address _address,
         string memory _name,
-        string memory _place
+        string memory _place,
+        string memory _latitude,
+        string memory _longitude
     ) public onlyByOwner() {
         retCtr++;
-        RET[retCtr] = retailer(_address, retCtr, _name, _place);
+        RET[retCtr] = retailer(_address, retCtr, _name, _place,_latitude,_longitude);
     }
 
     //To supply raw materials from RMS supplier to the manufacturer

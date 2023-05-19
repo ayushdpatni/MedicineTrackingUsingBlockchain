@@ -5,6 +5,7 @@ import SupplyChainABI from "./artifacts/SupplyChain.json";
 import LoadingSpinner from "./LoadingSpinner";
 import QRCode from "react-qr-code";
 
+
 function Track() {
   const history = useHistory();
   useEffect(() => {
@@ -128,6 +129,12 @@ function Track() {
     return <LoadingSpinner />;
   }
   if (TrackTillSold) {
+    const googleMapsLinkMan = `https://maps.google.com/maps?q=${MAN[MED[ID].MANid].latitude},${MAN[MED[ID].MANid].longitude}`;
+    const googleMapsLinkRMS = `https://maps.google.com/maps?q=${RMS[MED[ID].RMSid].latitude},${RMS[MED[ID].RMSid].longitude}`;
+    const googleMapsLinkDIS = `https://maps.google.com/maps?q=${DIS[MED[ID].DISid].latitude},${DIS[MED[ID].DISid].longitude}`;
+    const googleMapsLinkRET = `https://maps.google.com/maps?q=${RET[MED[ID].RETid].latitude},${RET[MED[ID].RETid].longitude}`;
+    console.log(RMS[MED[ID].RMSid])
+    
     return (
       <div className="container-xl">
         <article className="col-4">
@@ -154,6 +161,7 @@ function Track() {
             <b>Current stage: </b>
             {MedStage[ID]}
           </span>
+          <p className="symbolName">M</p>
         </article>
         <hr />
         <br />
@@ -173,8 +181,9 @@ function Track() {
               <b>Place: </b>
               {RMS[MED[ID].RMSid].place}
             </p>
+            <a href={googleMapsLinkRMS} target="_blank" rel="noopener noreferrer">View Location</a>
           </article>
-          <span>&#10132;</span>
+          <span className="arrow">&#10132;</span>
           <article className="col-3">
             <h4>
               <u>Manufactured by:</u>
@@ -190,8 +199,9 @@ function Track() {
               <b>Place: </b>
               {MAN[MED[ID].MANid].place}
             </p>
+            <a href={googleMapsLinkMan} target="_blank" rel="noopener noreferrer">View Location</a>
           </article>
-          <span>&#10132;</span>
+          <span className="arrow">&#10132;</span>
           <article className="col-3">
             <h4>
               <u>Distributed by:</u>
@@ -207,8 +217,10 @@ function Track() {
               <b>Place: </b>
               {DIS[MED[ID].DISid].place}
             </p>
+            <a href={googleMapsLinkDIS} target="_blank" rel="noopener noreferrer">View Location</a>
+
           </article>
-          <span>&#10132;</span>
+          <span className="arrow">&#10132;</span>
           <article className="col-3">
             <h4>
               <u>Retailed by:</u>
@@ -224,8 +236,9 @@ function Track() {
               <b>Place: </b>
               {RET[MED[ID].RETid].place}
             </p>
+            <a href={googleMapsLinkRET} target="_blank" rel="noopener noreferrer">View Location</a>
           </article>
-          <span>&#10132;</span>
+          <span className="arrow">&#10132;</span>
           <article className="col-3">
             <h4>
               <u>Sold</u>
@@ -253,6 +266,11 @@ function Track() {
     );
   }
   if (TrackTillRetail) {
+    const googleMapsLinkMan = `https://maps.google.com/maps?q=${MAN[MED[ID].MANid].latitude},${MAN[MED[ID].MANid].longitude}`;
+    const googleMapsLinkRMS = `https://maps.google.com/maps?q=${RMS[MED[ID].RMSid].latitude},${RMS[MED[ID].RMSid].longitude}`;
+    const googleMapsLinkDIS = `https://maps.google.com/maps?q=${DIS[MED[ID].DISid].latitude},${DIS[MED[ID].DISid].longitude}`;
+    const googleMapsLinkRET = `https://maps.google.com/maps?q=${RET[MED[ID].RETid].latitude},${RET[MED[ID].RETid].longitude}`;
+    
     return (
       <div className="container-xl">
         <article className="col-4">
@@ -298,6 +316,7 @@ function Track() {
               <b>Place: </b>
               {RMS[MED[ID].RMSid].place}
             </p>
+            <a href={googleMapsLinkRMS} target="_blank" rel="noopener noreferrer">View Location</a>
           </article>
           <span>&#10132;</span>
           <article className="col-3">
@@ -315,6 +334,7 @@ function Track() {
               <b>Place: </b>
               {MAN[MED[ID].MANid].place}
             </p>
+            <a href={googleMapsLinkMan} target="_blank" rel="noopener noreferrer">View Location</a>
           </article>
           <span>&#10132;</span>
           <article className="col-3">
@@ -332,6 +352,7 @@ function Track() {
               <b>Place: </b>
               {DIS[MED[ID].DISid].place}
             </p>
+            <a href={googleMapsLinkDIS} target="_blank" rel="noopener noreferrer">View Location</a>
           </article>
           <span>&#10132;</span>
           <article className="col-3">
@@ -349,6 +370,7 @@ function Track() {
               <b>Place: </b>
               {RET[MED[ID].RETid].place}
             </p>
+            <a href={googleMapsLinkRET} target="_blank" rel="noopener noreferrer">View Location</a>
           </article>
         </section>
         <button
@@ -372,6 +394,10 @@ function Track() {
     );
   }
   if (TrackTillDistribution) {
+    const googleMapsLinkMan = `https://maps.google.com/maps?q=${MAN[MED[ID].MANid].latitude},${MAN[MED[ID].MANid].longitude}`;
+    const googleMapsLinkRMS = `https://maps.google.com/maps?q=${RMS[MED[ID].RMSid].latitude},${RMS[MED[ID].RMSid].longitude}`;
+    const googleMapsLinkDIS = `https://maps.google.com/maps?q=${DIS[MED[ID].DISid].latitude},${DIS[MED[ID].DISid].longitude}`;
+    console.log(DIS[MED[ID].DISid])
     return (
       <div className="container-xl">
         <article className="col-4">
@@ -417,6 +443,7 @@ function Track() {
               <b>Place: </b>
               {RMS[MED[ID].RMSid].place}
             </p>
+            <a href={googleMapsLinkRMS} target="_blank" rel="noopener noreferrer">View Location</a>
           </article>
           <span>&#10132;</span>
           <article className="col-3">
@@ -434,6 +461,7 @@ function Track() {
               <b>Place: </b>
               {MAN[MED[ID].MANid].place}
             </p>
+            <a href={googleMapsLinkMan} target="_blank" rel="noopener noreferrer">View Location</a>
           </article>
           <span>&#10132;</span>
           <article className="col-3">
@@ -451,6 +479,7 @@ function Track() {
               <b>Place: </b>
               {DIS[MED[ID].DISid].place}
             </p>
+            <a href={googleMapsLinkDIS} target="_blank" rel="noopener noreferrer">View Location</a>
           </article>
         </section>
         <button
@@ -474,6 +503,9 @@ function Track() {
     );
   }
   if (TrackTillManufacture) {
+    const googleMapsLinkMan = `https://maps.google.com/maps?q=${MAN[MED[ID].MANid].latitude},${MAN[MED[ID].MANid].longitude}`;
+    const googleMapsLinkRMS = `https://maps.google.com/maps?q=${RMS[MED[ID].RMSid].latitude},${RMS[MED[ID].RMSid].longitude}`;
+    console.log(MAN[MED[ID].MANid])
     return (
       <div className="container-xl">
         <article className="col-4">
@@ -519,6 +551,7 @@ function Track() {
               <b>Place: </b>
               {RMS[MED[ID].RMSid].place}
             </p>
+            <a href={googleMapsLinkRMS} target="_blank" rel="noopener noreferrer">View Location</a>
           </article>
           <span>&#10132;</span>
           <article className="col-3">
@@ -536,6 +569,7 @@ function Track() {
               <b>Place: </b>
               {MAN[MED[ID].MANid].place}
             </p>
+            <a href={googleMapsLinkMan} target="_blank" rel="noopener noreferrer">View Location</a>
           </article>
         </section>
         <button
@@ -559,6 +593,8 @@ function Track() {
     );
   }
   if (TrackTillRMS) {
+    console.log(RMS[MED[ID].RMSid])
+    const googleMapsLinkRMS = `https://maps.google.com/maps?q=${RMS[MED[ID].RMSid].latitude},${RMS[MED[ID].RMSid].longitude}`;
     return (
       <div className="container-xl">
         <article className="col-4">
@@ -604,6 +640,7 @@ function Track() {
               <b>Place: </b>
               {RMS[MED[ID].RMSid].place}
             </p>
+            <a href={googleMapsLinkRMS} target="_blank" rel="noopener noreferrer">View Location</a>
           </article>
         </section>
         <button

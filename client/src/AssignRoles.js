@@ -3,12 +3,33 @@ import Web3 from "web3";
 import SupplyChainABI from "./artifacts/SupplyChain.json"
 import { useHistory } from "react-router-dom"
 import LoadingSpinner from "./LoadingSpinner"
+
 function AssignRoles() {
     const history = useHistory()
+    const [latitude, setlatitude] = useState("18.520430");
+    const [longitude, setlongitude] = useState("73.856744");
+
     useEffect(() => {
         loadWeb3();
         loadBlockchaindata();
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(handleLocation, handleLocationError);
+          } else {
+            alert('Geolocation is not supported by this browser.');
+          }
     }, [])
+
+    const handleLocation = (position) => {
+        const { latitude, longitude } = position.coords;
+        setlatitude(latitude);
+        setlongitude(longitude)
+      };
+    
+      const handleLocationError = (error) => {
+        alert('Error getting location:', error.message);
+      };
+    
+    
     const [currentaccount, setCurrentaccount] = useState("");
     const [loader, setloader] = useState(true);
     const [SupplyChain, setSupplyChain] = useState();
@@ -131,8 +152,11 @@ function AssignRoles() {
     }
     const handlerSubmitRMS = async (event) => {
         event.preventDefault();
+        let lat = latitude.toString();
+        let lon = longitude.toString();
         try {
-            var reciept = await SupplyChain.methods.addRMS(RMSaddress, RMSname, RMSplace).send({ from: currentaccount });
+            var reciept = await SupplyChain.methods.addRMS(RMSaddress, RMSname, RMSplace,lat,lon).send({ from: currentaccount });
+            console.log(reciept)
             if (reciept) {
                 loadBlockchaindata();
             }
@@ -143,8 +167,10 @@ function AssignRoles() {
     }
     const handlerSubmitMAN = async (event) => {
         event.preventDefault();
+        let lat = latitude.toString();
+        let lon = longitude.toString();
         try {
-            var reciept = await SupplyChain.methods.addManufacturer(MANaddress, MANname, MANplace).send({ from: currentaccount });
+            var reciept = await SupplyChain.methods.addManufacturer(MANaddress, MANname, MANplace,lat,lon).send({ from: currentaccount });
             if (reciept) {
                 loadBlockchaindata();
             }
@@ -155,8 +181,10 @@ function AssignRoles() {
     }
     const handlerSubmitDIS = async (event) => {
         event.preventDefault();
+        let lat = latitude.toString();
+        let lon = longitude.toString();
         try {
-            var reciept = await SupplyChain.methods.addDistributor(DISaddress, DISname, DISplace).send({ from: currentaccount });
+            var reciept = await SupplyChain.methods.addDistributor(DISaddress, DISname, DISplace,lat,lon).send({ from: currentaccount });
             if (reciept) {
                 loadBlockchaindata();
             }
@@ -167,8 +195,10 @@ function AssignRoles() {
     }
     const handlerSubmitRET = async (event) => {
         event.preventDefault();
+        let lat = latitude.toString();
+        let lon = longitude.toString();
         try {
-            var reciept = await SupplyChain.methods.addRetailer(RETaddress, RETname, RETplace).send({ from: currentaccount });
+            var reciept = await SupplyChain.methods.addRetailer(RETaddress, RETname, RETplace,lat,lon).send({ from: currentaccount });
             if (reciept) {
                 loadBlockchaindata();
             }

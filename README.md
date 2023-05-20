@@ -1,8 +1,5 @@
-# [Simple Supply Chain Simulation](https://www.youtube.com/watch?v=2e-NGuT1PnY)
-Supply chain simulation using blockchain.
-
+# FAKE MEDICINE SUPPLY DETECTION USING BLOCKCHAIN
 ##  🔧 Setting up Local Development
-
 ### Step1.
 Open ganache UI/cli and configure truffle-config.js file
 ### Step2.
@@ -18,4 +15,3 @@ yarn start
 ```
 
 The site is now running at `http://localhost:3000`!
-Open the source code and start editing!
